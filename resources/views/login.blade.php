@@ -39,6 +39,13 @@
                         </div>
                     </div>
 
+                    {{-- error login --}}
+                    @if (session('loginError'))
+                        <div class="alert alert-danger mt-3">
+                            {{ session('loginError') }}
+                        </div> 
+                    @endif
+
                     <!-- copy -->
                     <div class="text-center text-secondary mt-3">
                         <small>&copy; <?= date('Y') ?> Notes</small>
