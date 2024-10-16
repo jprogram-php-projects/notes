@@ -75,6 +75,13 @@ class AuthController extends Controller
                     ->with('loginError', 'Username ou password estão incorretos!');
         }
 
+        session([
+            'user' => [
+                'id' => $user->id,
+                'username' => $user->username
+            ]
+        ]);
+
         // echo '<pre>';
         // print_r($user);
         echo 'LOGIN REALIZADO COM SUCESSO!';
@@ -82,6 +89,8 @@ class AuthController extends Controller
 
     public function logout()
     {
-        echo 'logout';
+        // logout from the application
+        session()->forget('user');
+        return redirect()->to('/login');
     }
 }
