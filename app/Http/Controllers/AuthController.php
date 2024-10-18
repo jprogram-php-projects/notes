@@ -84,7 +84,7 @@ class AuthController extends Controller
 
         // echo '<pre>';
         // print_r($user);
-        echo 'LOGIN REALIZADO COM SUCESSO!';
+        return redirect()->to('/');
     }
 
     public function logout()
