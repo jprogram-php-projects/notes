@@ -12,14 +12,15 @@ Route::middleware([CheckIsNotLogged::class])->group(function(){
 });
 
 Route::middleware([CheckIsLogged::class]) ->group(function(){
-    Route::get('/'         , [ MainController::class, 'index'     ])->name('home');
-    Route::get('/newNote'  , [ MainController::class, 'newNote'   ])->name('new');
-    Route::post('/newNoteSubmit' , [ MainController::class, 'newNoteSubmit'])->name('newNoteSubmit');
+    Route::get('/'                      , [ MainController::class, 'index'     ])->name('home');
+    Route::get('/newNote'               , [ MainController::class, 'newNote'   ])->name('new');
+    Route::post('/newNoteSubmit'        , [ MainController::class, 'newNoteSubmit'])->name('newNoteSubmit');
 
-    Route::get('/editNote/{id}'  , [ MainController::class, 'editNote'  ])->name('edit');
-    Route::post('/editNoteSubmit', [ MainController::class, 'editNoteSubmit'  ])->name('editNoteSubmit');
+    Route::get('/editNote/{id}'         , [ MainController::class, 'editNote'  ])->name('edit');
+    Route::post('/editNoteSubmit'       , [ MainController::class, 'editNoteSubmit'  ])->name('editNoteSubmit');
     
-    Route::get('/deleteNote/{id}', [ MainController::class, 'deleteNote'])->name('delete');
+    Route::get('/deleteNote/{id}'       , [ MainController::class, 'deleteNote'])->name('delete');
+    Route::get('/deleteNoteConfirm/{id}', [ MainController::class, 'deleteNoteConfirm'])->name('deleteNoteConfirm');
 
-    Route::get('/logout'    , [ AuthController::class, 'logout'    ])->name('logout');
+    Route::get('/logout'                , [ AuthController::class, 'logout'    ])->name('logout');
 });
