@@ -11,16 +11,24 @@ Route::middleware([CheckIsNotLogged::class])->group(function(){
     Route::post('loginSubmit' , [ AuthController::class, 'loginSubmit']);
 });
 
-Route::middleware([CheckIsLogged::class]) ->group(function(){
-    Route::get('/'                      , [ MainController::class, 'index'     ])->name('home');
-    Route::get('/newNote'               , [ MainController::class, 'newNote'   ])->name('new');
-    Route::post('/newNoteSubmit'        , [ MainController::class, 'newNoteSubmit'])->name('newNoteSubmit');
+Route::middleware([CheckIsLogged::class])->group(function(){
 
-    Route::get('/editNote/{id}'         , [ MainController::class, 'editNote'  ])->name('edit');
-    Route::post('/editNoteSubmit'       , [ MainController::class, 'editNoteSubmit'  ])->name('editNoteSubmit');
+    Route::controller(MainController::class)->group(function(){
+
+        Route::get('/'                      , 'index'            )->name('home');
+        Route::get('/newNote'               , 'newNote'          )->name('new');
+        Route::post('/newNoteSubmit'        , 'newNoteSubmit'    )->name('newNoteSubmit');
     
-    Route::get('/deleteNote/{id}'       , [ MainController::class, 'deleteNote'])->name('delete');
-    Route::get('/deleteNoteConfirm/{id}', [ MainController::class, 'deleteNoteConfirm'])->name('deleteNoteConfirm');
+        Route::get('/editNote/{id}'         , 'editNote'         )->name('edit');
+        Route::post('/editNoteSubmit'       , 'editNoteSubmit'   )->name('editNoteSubmit');
+        
+        Route::get('/deleteNote/{id}'       , 'deleteNote'       )->name('delete');
+        Route::get('/deleteNoteConfirm/{id}', 'deleteNoteConfirm')->name('deleteNoteConfirm');
+    });
 
-    Route::get('/logout'                , [ AuthController::class, 'logout'    ])->name('logout');
+    Route::get('/logout', [ AuthController::class, 'logout' ])->name('logout');
+});
+
+Route::fallback(function(){
+    return "Página não encontrada!";
 });
