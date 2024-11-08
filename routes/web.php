@@ -32,3 +32,26 @@ Route::middleware([CheckIsLogged::class])->group(function(){
 Route::fallback(function(){
     return "Página não encontrada!";
 });
+
+// * Tests routes *
+
+// Route::prefix('admin')->group(function(){
+//     Route::get('/test', function(){
+//         echo "Teste";
+//     });
+// });
+
+// --> route single action
+// php artisan make:controller TestController --invokabled
+// Route::get('/test', TestController::class)->name('test');
+
+// -> route type resource (CRUD)
+// php artisan make:controller UserController --resource
+// Route::resource('users', UserController::class);
+
+// or
+
+// Route::resources([
+//     'users' => UserController::class,
+//     'clients' => ClientsController::class
+// ]);
