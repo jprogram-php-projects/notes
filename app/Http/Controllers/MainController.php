@@ -5,11 +5,13 @@ namespace App\Http\Controllers;
 use App\Models\Note;
 use App\Models\User;
 use App\Services\Operations;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\View\View;
 
 class MainController extends Controller
 {
-    public function index()
+    public function index(): View
     {
         $id = session('user.id');
         // $user = User::find($id)->toArray();
@@ -65,7 +67,7 @@ class MainController extends Controller
         return redirect()->route('home');
     }
     
-    public function editNote($id)
+    public function editNote($id): View
     {
         $id = Operations::decryptId($id);
 
@@ -81,7 +83,7 @@ class MainController extends Controller
         return view('edit_note', ['note' => $note]);       
     }
 
-    public function editNoteSubmit(Request $request)
+    public function editNoteSubmit(Request $request): RedirectResponse
     {
         // validate request
         $request->validate(
@@ -125,7 +127,7 @@ class MainController extends Controller
         return redirect()->route('home');
     }
 
-    public function deleteNote($id)
+    public function deleteNote($id): View
     {
         $id = Operations::decryptId($id);
 
