@@ -29,10 +29,11 @@ Este é um projeto Laravel chamado **Notes**, onde os usuários podem criar, ler
 
 3. Configure o arquivo .env:
 
-    Duplique o arquivo .env.example para criar um arquivo .env.
-   
-    Configure as informações do banco de dados MySQL:
-    ```env
+- Renomeie o arquivo .env.example para .env.
+
+- Configure as informações do banco de dados MySQL:
+
+    ```
     DB_CONNECTION=mysql
     DB_HOST=127.0.0.1
     DB_PORT=3306
@@ -40,13 +41,24 @@ Este é um projeto Laravel chamado **Notes**, onde os usuários podem criar, ler
     DB_USERNAME=seu_usuario
     DB_PASSWORD=sua_senha
 
-4. Execute as migrações do banco de dados:
+4. Gere a chave da aplicação:
 
-    ```bash
-    php artisan migrate
+   ```bash
+   php artisan key:generate
+   ```
 
-5. Uso
-    Para iniciar o servidor de desenvolvimento, execute:
-    ```bash
-    php artisan serve
-Acesse o sistema no navegador em http://localhost:8000.
+5. Execute as migrações do banco de dados:
+
+   ```bash
+   php artisan migrate
+   ```
+
+6. Uso:
+   Para iniciar o servidor de desenvolvimento, execute:
+
+   ```bash
+   php artisan serve
+   ```
+
+   Acesse o sistema no navegador em [http://localhost:8000](http://localhost:8000).
+
